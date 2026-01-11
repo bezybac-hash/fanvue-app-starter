@@ -1,11 +1,9 @@
-import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from './i18n/request';
+import { NextRequest, NextResponse } from 'next/server';
 
-export default createMiddleware({
-  locales,
-  defaultLocale,
-  localePrefix: 'never' // Don't add locale prefix to URLs
-});
+export function middleware(request: NextRequest) {
+  // Simply pass through all requests
+  return NextResponse.next();
+}
 
 export const config = {
   // Skip all paths that should not be internationalized
